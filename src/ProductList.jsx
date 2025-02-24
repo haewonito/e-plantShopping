@@ -10,6 +10,7 @@ function ProductList() {
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({}); // State to store the items added to the cart
   const dispatch = useDispatch();
+  const itemNumberInCart = useSelector((state) => state.cart.items.length);
 
   const plantsArray = [
     {
@@ -289,13 +290,11 @@ function ProductList() {
   };
 
   const handleAddToCart = (plant) => {
-    console.log("Adding to cart1", addedToCart);
     dispatch(addItem(plant));
     setAddedToCart((prevState) => ({
       ...prevState,
       [plant.name]: true,
     }));
-    console.log("Added to cart2", addedToCart);
   };
 
   return (
@@ -346,6 +345,7 @@ function ProductList() {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
+                <span className="cart_quantity_count">{itemNumberInCart}</span>
               </h1>
             </a>
           </div>
