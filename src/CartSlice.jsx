@@ -28,16 +28,6 @@ export const CartSlice = createSlice({
         itemToUpdate.quantity = quantity;
       }
     },
-    //todo delete
-    // updateQuantity: (state, action) => {
-    //   const { name: nameToUpdate, quantity: quantityToUpdate } = action.payload;
-    //   const itemToUpdate = state.items.find(
-    //     item => item.name === nameToUpdate
-    //   );
-    //   if (itemToUpdate) {
-    //     itemToUpdate.quantity = quantityToUpdate;
-    //   }
-    // },
   },
 });
 
