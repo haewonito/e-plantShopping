@@ -15,8 +15,29 @@ export const CartSlice = createSlice({
         state.items.push({ name, image, cost, quantity: 1 });
       }
     },
-    removeItem: (state, action) => {},
-    updateQuantity: (state, action) => {},
+
+    removeItem: (state, action) => {
+      const { name } = action.payload;
+      state.items = state.items.filter((item) => item.name !== name);
+    },
+
+    updateQuantity: (state, action) => {
+      const { name, quantity } = action.payload;
+      const itemToUpdate = state.items.find((item) => item.name === name);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
+      }
+    },
+    //todo delete
+    // updateQuantity: (state, action) => {
+    //   const { name: nameToUpdate, quantity: quantityToUpdate } = action.payload;
+    //   const itemToUpdate = state.items.find(
+    //     item => item.name === nameToUpdate
+    //   );
+    //   if (itemToUpdate) {
+    //     itemToUpdate.quantity = quantityToUpdate;
+    //   }
+    // },
   },
 });
 
