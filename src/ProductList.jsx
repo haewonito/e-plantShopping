@@ -3,12 +3,12 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCartCount } from "./CartSlice";
+// import { selectCartCount } from "./CartSlice";
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-  const [addedToCard, setAddedToCard] = useState({}); // State to store the items added to the cart
+  const [addedToCart, setAddedToCart] = useState({}); // State to store the items added to the cart
   const dispatch = useDispatch();
 
   const plantsArray = [
@@ -289,11 +289,13 @@ function ProductList() {
   };
 
   const handleAddToCart = (plant) => {
-    dispatch(addItem(product));
+    console.log("Adding to cart1", addedToCart);
+    dispatch(addItem(plant));
     setAddedToCart((prevState) => ({
       ...prevState,
-      [product.name]: true,
+      [plant.name]: true,
     }));
+    console.log("Added to cart2", addedToCart);
   };
 
   return (
